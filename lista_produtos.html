@@ -1,0 +1,63 @@
+{% csrf_token %}
+<div class="container">
+    <h1>Lista de Produtos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+                <th>Data de Validade</th>
+                <th>Setor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{ produto.cod_produto }}</td>
+                <td>{{ produto.des_produto }}</td>
+                <td>{{ produto.qtd_produtos }}</td>
+                <td>{{ produto.validade_produto }}</td>
+                <td>{{ produto.setor }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhum produto encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* Estilo geral da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaçamento entre células */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd; /* Cor da borda */
+}
+
+th {
+    background-color: #f2f2f2; /* Cor de fundo para o cabeçalho */
+}
+
+/* Cor preta para os dados da tabela */
+td {
+    color: black; /* Cor preta para os dados */
+}
+
+/* Cor de fundo das linhas alternadas */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+}
+
+</style>

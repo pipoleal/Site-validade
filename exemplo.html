@@ -1,0 +1,101 @@
+{% extends "global/index.html" %}
+
+{% block texto %} {{ text }} {% endblock texto %}
+
+{% block form %}
+<style>
+  /* Reset básico */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Estilo do corpo */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  /* Container do formulário */
+  .Tela_login {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .Tela_login form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Tela_login label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  .Tela_login input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  .Tela_login input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+
+  .Tela_login button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .Tela_login button:hover {
+    background-color: #0056b3;
+  }
+
+  
+</style>
+
+<div class='Tela_login'>
+    <form action="{% url 'blog:produtos' %}" method="post"> 
+        {% csrf_token %} 
+       
+        <label for="codigo_produto">Insira o código do produto:</label>
+        <input type="number" id="codigo_produto" name="campo_codigo" placeholder="Código do produto" required>
+        
+        <label for="descricao_produto">Insira a descrição do produto:</label>
+        <input type="text" id="descricao_produto" name="Descricao" placeholder="Descrição do produto" required>
+        
+        <label for="quantidade_produtos">Insira a quantidade de produtos:</label>
+        <input type="number" id="quantidade_produtos" name="Quantidade" placeholder="Quantidade de produtos" required>
+        
+        <label for="data_produto">Insira a validade do produto:</label>
+        <input type="date" id="data_produto" name="Data_validade" required>
+        
+        <label for="setor">Insira seu setor:</label>
+        <input type="text" id="setor" name="setor_colaborador" placeholder="Seu setor/colaborador" required>
+        
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock form %}
